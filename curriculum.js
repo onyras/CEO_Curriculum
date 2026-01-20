@@ -3,7 +3,7 @@
 
 // ============================================
 // PASTE YOUR GOOGLE APPS SCRIPT URL HERE:
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxwPCpuxL85Dgc4TDlxUgNIW2G5GvBQZmrA5sZIbiJQuJwXOexyc9ZLsCOcmot5-LFiCQ/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyWuBuzFHi3cRW7UzjN_d11WqVFJahhDWhn2UCVspCC1CQ3xC5ZJsRRLhcpVuBMn2ZyDQ/exec';
 // ============================================
 
 let currentStep = 1;
