@@ -321,8 +321,7 @@ function showSuccessMessage(clientName, clientEmail) {
                     </svg>
                 </div>
                 <h3>Curriculum Submitted!</h3>
-                <p>Thanks, ${clientName}. A copy has been sent to <strong>${clientEmail}</strong> and to Nikolas.</p>
-                <p class="success-note">We'll review your selections and discuss next steps in our upcoming session.</p>
+                <p>Thanks, ${clientName}. We'll review your selections and discuss next steps in our upcoming session.</p>
             </div>
         `;
     }
