@@ -1,6 +1,11 @@
 // CEO Curriculum Onboarding
 // Checklist-style module selection with email submission
 
+// ============================================
+// PASTE YOUR GOOGLE APPS SCRIPT URL HERE:
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxwPCpuxL85Dgc4TDlxUgNIW2G5GvBQZmrA5sZIbiJQuJwXOexyc9ZLsCOcmot5-LFiCQ/exec';
+// ============================================
+
 let currentStep = 1;
 const totalSteps = 7;
 
@@ -267,9 +272,10 @@ async function handleSubmit(event) {
     const emailContent = buildEmailContent(clientName, clientEmail);
 
     try {
-        // Send to API endpoint
-        const response = await fetch('/api/submit-curriculum', {
+        // Send to Google Sheets
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
+            mode: 'no-cors', // Required for Google Apps Script
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -281,22 +287,22 @@ async function handleSubmit(event) {
             })
         });
 
-        const result = await response.json();
-
-        if (!response.ok) {
-            throw new Error(result.error || 'Failed to submit');
-        }
-
-        // Success!
+        // With no-cors, we can't read the response, but if no error was thrown, it likely succeeded
         closeEmailModal();
         showSuccessMessage(clientName, clientEmail);
 
     } catch (error) {
         console.error('Submission error:', error);
-        // Show error but still show success for demo purposes
-        // In production, you'd want proper error handling
-        closeEmailModal();
-        showSuccessMessage(clientName, clientEmail);
+        // Show error message to user
+        alert('There was an error submitting your curriculum. Please try again or contact Nikolas directly.');
+
+        // Reset button state
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = submitBtn.querySelector('.btn-text');
+        const btnLoading = submitBtn.querySelector('.btn-loading');
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+        submitBtn.disabled = false;
     }
 }
 
