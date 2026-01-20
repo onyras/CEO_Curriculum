@@ -254,7 +254,7 @@ h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
 
 .bento-box.bento-highlight {
     background: rgba(0, 0, 0, 0.03);
-    border-left: 3px solid var(--nk-gold);
+    border-left: 3px solid var(--nk-yellow);
 }
 
 .bento-box p {
@@ -1920,6 +1920,71 @@ h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
    Checklist Styles (Main Curriculum)
    ======================================== */
 
+/* NK Clean Domain Header */
+.domain-header-clean {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+}
+
+.domain-header-clean .domain-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--nk-white);
+    border-radius: 16px;
+    margin: 0 auto 1.25rem;
+}
+
+.domain-header-clean .domain-icon svg {
+    width: 32px;
+    height: 32px;
+}
+
+.domain-header-clean .domain-icon.yourself {
+    border: 2px solid var(--yourself-color);
+}
+
+.domain-header-clean .domain-icon.yourself svg {
+    stroke: var(--yourself-color);
+}
+
+.domain-header-clean .domain-icon.teams {
+    border: 2px solid var(--teams-color);
+}
+
+.domain-header-clean .domain-icon.teams svg {
+    stroke: var(--teams-color);
+}
+
+.domain-header-clean .domain-icon.organizations {
+    border: 2px solid var(--organizations-color);
+}
+
+.domain-header-clean .domain-icon.organizations svg {
+    stroke: var(--organizations-color);
+}
+
+.domain-header-clean .domain-icon.intensives {
+    border: 2px solid var(--nk-lilac);
+}
+
+.domain-header-clean .domain-icon.intensives svg {
+    stroke: var(--nk-lilac);
+}
+
+.domain-header-clean .page-title {
+    margin-bottom: 0.5rem;
+}
+
+.domain-header-clean .page-subtitle {
+    margin-bottom: 0;
+}
+
+/* Legacy Domain Header */
 .domain-header-large {
     display: flex;
     align-items: center;
@@ -2134,6 +2199,25 @@ h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
 
 .total-count span {
     font-weight: 700;
+    color: var(--nk-green);
+}
+
+/* NK Clean Total Count */
+.total-count-clean {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: rgba(166, 190, 164, 0.12);
+    border-radius: 12px;
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 1.5rem 0 2rem;
+}
+
+.total-count-clean span {
+    font-weight: 700;
+    font-size: 1.5rem;
     color: var(--nk-green);
 }
 
