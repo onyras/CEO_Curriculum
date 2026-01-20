@@ -71,7 +71,7 @@ function prevStep() {
 
 // Update selection counts
 function updateCounts() {
-    const domains = ['yourself', 'teams', 'organizations', 'resources'];
+    const domains = ['yourself', 'others', 'organizations', 'intensives'];
     let total = 0;
 
     domains.forEach(domain => {
@@ -89,9 +89,9 @@ function updateCounts() {
 function getSelectedModules() {
     const selected = {
         yourself: [],
-        teams: [],
+        others: [],
         organizations: [],
-        resources: []
+        intensives: []
     };
 
     document.querySelectorAll('input[name="module"]:checked').forEach(checkbox => {
@@ -115,9 +115,9 @@ function populateReview() {
 
     const domainInfo = {
         yourself: { title: 'Leading Yourself', icon: 'yourself' },
-        teams: { title: 'Leading Teams', icon: 'teams' },
-        organizations: { title: 'Leading Organizations', icon: 'organizations' },
-        resources: { title: 'Case Studies & Resources', icon: 'resources' }
+        others: { title: 'Leading Others', icon: 'others' },
+        organizations: { title: 'Leading the Organization', icon: 'organizations' },
+        intensives: { title: 'Intensives', icon: 'intensives' }
     };
 
     let html = '';
@@ -155,9 +155,9 @@ function buildEmailContent(clientName, clientEmail) {
     const selected = getSelectedModules();
     const domainTitles = {
         yourself: 'LEADING YOURSELF',
-        teams: 'LEADING TEAMS',
-        organizations: 'LEADING ORGANIZATIONS',
-        resources: 'CASE STUDIES & RESOURCES'
+        others: 'LEADING OTHERS',
+        organizations: 'LEADING THE ORGANIZATION',
+        intensives: 'INTENSIVES'
     };
 
     let content = `CEO CURRICULUM SELECTIONS\n`;
