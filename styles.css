@@ -88,7 +88,7 @@ h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
 
 .centered {
     text-align: center;
-    max-width: 640px;
+    max-width: 860px;
     margin: 0 auto;
 }
 
@@ -207,7 +207,7 @@ h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
 }
 
 .intro-text {
-    max-width: 640px;
+    max-width: 860px;
     margin: 0 auto 2rem;
     color: rgba(0, 0, 0, 0.7);
     line-height: 1.75;
@@ -237,7 +237,7 @@ h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
 
 /* Intensives intro */
 .intensives-intro {
-    max-width: 640px;
+    max-width: 860px;
     margin: 0 auto 2rem;
     color: rgba(0, 0, 0, 0.7);
     line-height: 1.75;
