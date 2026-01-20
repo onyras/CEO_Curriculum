@@ -2,7 +2,7 @@
 // Checklist-style module selection with email submission
 
 let currentStep = 1;
-const totalSteps = 6;
+const totalSteps = 7;
 
 // Module data for building the summary
 const moduleData = {};
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function nextStep() {
     if (currentStep < totalSteps) {
         // If going to review step, populate it
-        if (currentStep === 5) {
+        if (currentStep === 6) {
             populateReview();
         }
 
@@ -302,7 +302,7 @@ async function handleSubmit(event) {
 
 // Show success message
 function showSuccessMessage(clientName, clientEmail) {
-    const reviewSection = document.querySelector('.wizard-step[data-step="6"] .step-content');
+    const reviewSection = document.querySelector('.wizard-step[data-step="7"] .step-content');
 
     // Replace the navigation with success message
     const existingNav = reviewSection.querySelector('.wizard-nav');
