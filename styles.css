@@ -743,6 +743,7 @@ h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
     display: flex;
     gap: 0.25rem;
     flex-wrap: nowrap;
+    justify-content: center;
 }
 
 .step {
@@ -754,11 +755,29 @@ h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
     font-size: 0.8125rem;
     color: rgba(0, 0, 0, 0.4);
     transition: all var(--nk-transition-fast);
+    cursor: pointer;
+}
+
+.step:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.step.completed {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.step.completed:hover {
+    background: rgba(166, 190, 164, 0.15);
 }
 
 .step.active {
     background: var(--nk-green);
     color: white;
+    cursor: default;
+}
+
+.step.active:hover {
+    background: var(--nk-green);
 }
 
 .step-number {

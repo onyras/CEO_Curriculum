@@ -8,6 +8,7 @@ const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzTZ7NhydFCBI
 
 let currentStep = 1;
 const totalSteps = 8;
+const visitedSteps = new Set([1]); // Track visited steps, start with step 1
 
 // Module data for building the summary
 const moduleData = {};
@@ -31,41 +32,71 @@ document.addEventListener('DOMContentLoaded', () => {
         checkbox.addEventListener('change', updateCounts);
     });
 
+    // Add click listeners to navigation steps
+    document.querySelectorAll('.step').forEach(step => {
+        step.addEventListener('click', () => {
+            const targetStep = parseInt(step.dataset.step);
+            if (visitedSteps.has(targetStep)) {
+                goToStep(targetStep);
+            }
+        });
+    });
+
     updateCounts();
 });
+
+// Navigate to a specific step
+function goToStep(targetStep) {
+    if (targetStep < 1 || targetStep > totalSteps || targetStep === currentStep) {
+        return;
+    }
+
+    // If going to review step, populate it
+    if (targetStep === 8) {
+        populateReview();
+    }
+
+    // Remove active from current step
+    document.querySelector(`.wizard-step[data-step="${currentStep}"]`).classList.remove('active');
+    document.querySelector(`.step[data-step="${currentStep}"]`).classList.remove('active');
+
+    // Mark current step as completed if moving forward
+    if (targetStep > currentStep) {
+        visitedSteps.add(currentStep);
+        document.querySelector(`.step[data-step="${currentStep}"]`).classList.add('completed');
+    }
+
+    currentStep = targetStep;
+
+    // Add active to new step
+    document.querySelector(`.wizard-step[data-step="${currentStep}"]`).classList.add('active');
+    document.querySelector(`.step[data-step="${currentStep}"]`).classList.add('active');
+
+    // Mark new step as visited
+    visitedSteps.add(currentStep);
+
+    // Update completed states for all visited steps
+    document.querySelectorAll('.step').forEach(step => {
+        const stepNum = parseInt(step.dataset.step);
+        if (visitedSteps.has(stepNum) && stepNum !== currentStep) {
+            step.classList.add('completed');
+        }
+    });
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 // Navigate to next step
 function nextStep() {
     if (currentStep < totalSteps) {
-        // If going to review step, populate it
-        if (currentStep === 7) {
-            populateReview();
-        }
-
-        document.querySelector(`.wizard-step[data-step="${currentStep}"]`).classList.remove('active');
-        document.querySelector(`.step[data-step="${currentStep}"]`).classList.remove('active');
-
-        currentStep++;
-
-        document.querySelector(`.wizard-step[data-step="${currentStep}"]`).classList.add('active');
-        document.querySelector(`.step[data-step="${currentStep}"]`).classList.add('active');
-
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        goToStep(currentStep + 1);
     }
 }
 
 // Navigate to previous step
 function prevStep() {
     if (currentStep > 1) {
-        document.querySelector(`.wizard-step[data-step="${currentStep}"]`).classList.remove('active');
-        document.querySelector(`.step[data-step="${currentStep}"]`).classList.remove('active');
-
-        currentStep--;
-
-        document.querySelector(`.wizard-step[data-step="${currentStep}"]`).classList.add('active');
-        document.querySelector(`.step[data-step="${currentStep}"]`).classList.add('active');
-
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        goToStep(currentStep - 1);
     }
 }
 
