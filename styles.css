@@ -283,15 +283,36 @@ h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
 .steps-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin: 2rem 0;
-    text-align: left;
+    gap: 2rem;
+    margin: 3rem 0;
+    text-align: center;
+    position: relative;
 }
 
 .step-card {
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 12px;
-    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    position: relative;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.step-card::before {
+    content: attr(data-number);
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    font-family: var(--nk-font-serif);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--nk-green);
+    opacity: 0.6;
 }
 
 .step-card .step-number {
@@ -309,22 +330,48 @@ h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
 }
 
 .step-card h3 {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+    font-family: var(--nk-font-serif);
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
     color: var(--nk-black);
+    line-height: 1.2;
+    min-height: 3.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .step-card p {
-    font-size: 0.9375rem;
+    font-size: 1rem;
     color: rgba(0, 0, 0, 0.65);
     line-height: 1.6;
     margin: 0;
 }
 
+@media (max-width: 1024px) {
+    .steps-grid {
+        gap: 1.5rem;
+    }
+
+    .step-card {
+        padding: 2rem 1.5rem;
+    }
+}
+
 @media (max-width: 768px) {
     .steps-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+
+    .step-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .step-card h3 {
+        font-size: 1.375rem;
     }
 }
 
@@ -730,9 +777,13 @@ h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
 .wizard-header .header-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    position: relative;
+    gap: 2rem;
+}
+
+.wizard-header .header-logo {
+    height: 24px;
+    width: auto;
+    flex-shrink: 0;
 }
 
 .wizard-header .header-logo-text {
@@ -746,11 +797,10 @@ h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
 
 .wizard-header .header-nav-wrapper {
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 0.5rem;
     flex: 1;
-    margin: 0 auto;
+    justify-content: center;
 }
 
 .wizard-header .header-title {
@@ -760,6 +810,7 @@ h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
 
 .wizard-steps {
     display: flex;
+    align-items: center;
     gap: 0.25rem;
     flex-wrap: nowrap;
 }
@@ -771,6 +822,7 @@ h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
     padding: 0.5rem 0.75rem;
     border-radius: 8px;
     font-size: 0.8125rem;
+    line-height: 1;
     color: rgba(0, 0, 0, 0.4);
     transition: all var(--nk-transition-fast);
     cursor: pointer;
@@ -817,6 +869,7 @@ h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
 .step-label {
     display: none;
     white-space: nowrap;
+    line-height: 1;
 }
 
 @media (min-width: 768px) {
@@ -2525,6 +2578,14 @@ h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
 @media (max-width: 640px) {
     html {
         font-size: 16px;
+    }
+
+    .wizard-header .header-logo {
+        height: 20px;
+    }
+
+    .wizard-header .header-content {
+        gap: 1rem;
     }
 
     .wizard-header .header-logo-text {
