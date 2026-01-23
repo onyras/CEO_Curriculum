@@ -148,7 +148,7 @@ function populateReview() {
         yourself: { title: 'Leading Yourself', icon: 'yourself' },
         others: { title: 'Leading Others', icon: 'others' },
         organizations: { title: 'Leading the Organization', icon: 'organizations' },
-        intensives: { title: 'Playbooks', icon: 'intensives' }
+        intensives: { title: 'Intensives', icon: 'intensives' }
     };
 
     let html = '';
@@ -188,7 +188,7 @@ function buildEmailContent(clientName, clientEmail) {
         yourself: 'LEADING YOURSELF',
         others: 'LEADING OTHERS',
         organizations: 'LEADING THE ORGANIZATION',
-        intensives: 'PLAYBOOKS'
+        intensives: 'INTENSIVES'
     };
 
     let content = `LEADERSHIP DEVELOPMENT MAP\n`;
