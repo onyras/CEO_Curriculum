@@ -7,7 +7,7 @@ const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzTZ7NhydFCBI
 // ============================================
 
 let currentStep = 1;
-const totalSteps = 7;
+const totalSteps = 8;
 
 // Module data for building the summary
 const moduleData = {};
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function nextStep() {
     if (currentStep < totalSteps) {
         // If going to review step, populate it
-        if (currentStep === 6) {
+        if (currentStep === 7) {
             populateReview();
         }
 
@@ -117,7 +117,7 @@ function populateReview() {
         yourself: { title: 'Leading Yourself', icon: 'yourself' },
         others: { title: 'Leading Others', icon: 'others' },
         organizations: { title: 'Leading the Organization', icon: 'organizations' },
-        intensives: { title: 'Intensives', icon: 'intensives' }
+        intensives: { title: 'Playbooks', icon: 'intensives' }
     };
 
     let html = '';
@@ -157,10 +157,10 @@ function buildEmailContent(clientName, clientEmail) {
         yourself: 'LEADING YOURSELF',
         others: 'LEADING OTHERS',
         organizations: 'LEADING THE ORGANIZATION',
-        intensives: 'INTENSIVES'
+        intensives: 'PLAYBOOKS'
     };
 
-    let content = `CEO CURRICULUM SELECTIONS\n`;
+    let content = `LEADERSHIP DEVELOPMENT MAP\n`;
     content += `========================\n\n`;
     content += `Client: ${clientName}\n`;
     content += `Email: ${clientEmail}\n`;
@@ -181,12 +181,12 @@ function buildEmailContent(clientName, clientEmail) {
         }
     });
 
-    content += `TOTAL MODULES SELECTED: ${totalCount}\n\n`;
+    content += `TOTAL MODULES: ${totalCount}\n\n`;
     content += `─────────────────────────────────\n`;
     content += `Next Steps:\n`;
-    content += `• Nikolas will review your selections\n`;
-    content += `• During your next session, you'll sequence these into quarters\n`;
-    content += `• Expect 1-2 deep dives per quarter\n`;
+    content += `• We'll use this map as our starting point\n`;
+    content += `• In our next session, we'll identify highest-leverage opportunities\n`;
+    content += `• We'll sequence 1-2 deep dives per quarter\n`;
 
     return content;
 }
@@ -213,7 +213,7 @@ function showEmailModal() {
     modal.innerHTML = `
         <div class="email-modal-content">
             <h2>Almost Done!</h2>
-            <p>Enter your details to receive a copy of your curriculum selections.</p>
+            <p>Enter your details to receive a copy of your development map.</p>
 
             <form id="curriculumForm" onsubmit="handleSubmit(event)">
                 <div class="form-group">
@@ -228,7 +228,7 @@ function showEmailModal() {
                 <div class="form-actions">
                     <button type="button" class="btn btn-secondary" onclick="closeEmailModal()">Back</button>
                     <button type="submit" class="btn btn-primary" id="submitBtn">
-                        <span class="btn-text">Submit Curriculum</span>
+                        <span class="btn-text">Submit Map</span>
                         <span class="btn-loading" style="display: none;">
                             <svg class="spinner" viewBox="0 0 24 24">
                                 <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="30 70"/>
@@ -294,7 +294,7 @@ async function handleSubmit(event) {
     } catch (error) {
         console.error('Submission error:', error);
         // Show error message to user
-        alert('There was an error submitting your curriculum. Please try again or contact Nikolas directly.');
+        alert('There was an error submitting your map. Please try again or contact Nikolas directly.');
 
         // Reset button state
         const submitBtn = document.getElementById('submitBtn');
@@ -308,7 +308,7 @@ async function handleSubmit(event) {
 
 // Show success message
 function showSuccessMessage(clientName, clientEmail) {
-    const reviewSection = document.querySelector('.wizard-step[data-step="7"] .step-content');
+    const reviewSection = document.querySelector('.wizard-step[data-step="8"] .step-content');
 
     // Replace the navigation with success message
     const existingNav = reviewSection.querySelector('.wizard-nav');
@@ -320,8 +320,8 @@ function showSuccessMessage(clientName, clientEmail) {
                         <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
                 </div>
-                <h3>Curriculum Submitted!</h3>
-                <p>Thanks, ${clientName}. We'll review your selections and discuss next steps in our upcoming session.</p>
+                <h3>Map Submitted!</h3>
+                <p>Thanks, ${clientName}. We'll use this as our starting point and discuss your highest-leverage opportunities in our upcoming session.</p>
             </div>
         `;
     }
