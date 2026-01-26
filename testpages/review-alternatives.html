@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Section Alternatives</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nk-blue: #7FABC8;
+            --nk-green: #A6BEA4;
+            --nk-yellow: #C6A55B;
+            --nk-lilac: #B8A7C9;
+            --nk-white: #FBF9F3;
+            --nk-font-serif: "Crimson Pro", serif;
+            --nk-font-sans: "DM Sans", sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--nk-font-sans);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 3rem 1rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: var(--nk-font-serif);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: #555;
+        }
+
+        .alternative {
+            background: white;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .alternative h2 {
+            font-family: var(--nk-font-serif);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .alternative .description {
+            font-size: 0.875rem;
+            color: #777;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .sample-data {
+            margin-top: 2rem;
+        }
+
+        /* Sample modules */
+        .sample-modules {
+            list-style: none;
+        }
+
+        /* ALTERNATIVE 1: Minimal List with Checkmarks */
+        .alt1-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .alt1-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .alt1-list li:last-child {
+            border-bottom: none;
+        }
+
+        .alt1-list li::before {
+            content: "✓";
+            color: var(--nk-green);
+            font-weight: 600;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .alt1-domain-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--nk-blue);
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .alt1-domain-title:first-child {
+            margin-top: 0;
+        }
+
+        /* ALTERNATIVE 2: Cards with Left Border */
+        .alt2-list {
+            list-style: none;
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .alt2-list li {
+            padding: 1rem 1.5rem;
+            background: #fafafa;
+            border-left: 4px solid var(--nk-green);
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .alt2-list li:hover {
+            background: #f5f5f5;
+            transform: translateX(4px);
+        }
+
+        .alt2-list .item-title {
+            font-weight: 500;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .alt2-list .item-subtitle {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .alt2-domain-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--nk-blue);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .alt2-domain-title:first-child {
+            margin-top: 0;
+        }
+
+        /* ALTERNATIVE 3: Compact Inline Tags */
+        .alt3-domain {
+            margin-bottom: 2rem;
+        }
+
+        .alt3-domain-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.75rem;
+        }
+
+        .alt3-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .alt3-tags span {
+            padding: 0.5rem 1rem;
+            background: var(--nk-white);
+            border: 1px solid rgba(127, 171, 200, 0.3);
+            border-radius: 20px;
+            font-size: 0.875rem;
+            color: #555;
+        }
+
+        /* ALTERNATIVE 4: Timeline Style */
+        .alt4-list {
+            list-style: none;
+            border-left: 2px solid var(--nk-blue);
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .alt4-list li {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .alt4-list li::before {
+            content: "";
+            width: 12px;
+            height: 12px;
+            background: var(--nk-green);
+            border-radius: 50%;
+            position: absolute;
+            left: -2.5rem;
+            top: 0.25rem;
+        }
+
+        .alt4-list .item-title {
+            font-weight: 500;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .alt4-list .item-subtitle {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .alt4-domain-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--nk-blue);
+            margin-top: 2.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .alt4-domain-title:first-child {
+            margin-top: 0;
+        }
+
+        /* ALTERNATIVE 5: Two-Column Grid */
+        .alt5-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .alt5-grid .item {
+            padding: 1.25rem;
+            background: var(--nk-white);
+            border-radius: 8px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .alt5-grid .item-title {
+            font-weight: 500;
+            display: block;
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+        }
+
+        .alt5-grid .item-subtitle {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .alt5-domain-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--nk-blue);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            grid-column: 1 / -1;
+        }
+
+        .alt5-domain-title:first-child {
+            margin-top: 0;
+        }
+
+        /* ALTERNATIVE 6: Numbered List with Color Accents */
+        .alt6-list {
+            list-style: none;
+            counter-reset: item;
+        }
+
+        .alt6-list li {
+            counter-increment: item;
+            padding: 1rem 1rem 1rem 3.5rem;
+            position: relative;
+            margin-bottom: 0.75rem;
+            background: #fafafa;
+            border-radius: 6px;
+        }
+
+        .alt6-list li::before {
+            content: counter(item);
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            background: var(--nk-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .alt6-list .item-title {
+            font-weight: 500;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .alt6-list .item-subtitle {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .alt6-domain-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--nk-blue);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .alt6-domain-title:first-child {
+            margin-top: 0;
+        }
+
+        /* ALTERNATIVE 7: Subtle Cards with Icons */
+        .alt7-list {
+            list-style: none;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .alt7-list li {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(166, 190, 164, 0.05) 0%, rgba(127, 171, 200, 0.05) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .alt7-list .item-title {
+            font-weight: 500;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .alt7-list .item-subtitle {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .alt7-domain-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--nk-blue);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .alt7-domain-title:first-child {
+            margin-top: 0;
+        }
+
+        .alt7-domain-title::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            background: var(--nk-green);
+            border-radius: 50%;
+        }
+
+        /* ALTERNATIVE 8: Simple Bullets with Hover */
+        .alt8-list {
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+
+        .alt8-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .alt8-list li::before {
+            content: "•";
+            position: absolute;
+            left: -1.5rem;
+            color: var(--nk-green);
+            font-size: 1.5rem;
+        }
+
+        .alt8-list li:hover {
+            color: var(--nk-blue);
+            padding-left: 0.5rem;
+        }
+
+        .alt8-domain-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #333;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .alt8-domain-title:first-child {
+            margin-top: 0;
+        }
+
+        /* ALTERNATIVE 9: Accordion-style Headers */
+        .alt9-domain {
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .alt9-domain-header {
+            background: linear-gradient(135deg, rgba(127, 171, 200, 0.08) 0%, rgba(166, 190, 164, 0.08) 100%);
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .alt9-domain-header .count {
+            background: var(--nk-green);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .alt9-list {
+            list-style: none;
+            padding: 1rem 1.5rem;
+        }
+
+        .alt9-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .alt9-list li:last-child {
+            border-bottom: none;
+        }
+
+        .alt9-list .item-title {
+            font-weight: 500;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .alt9-list .item-subtitle {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        /* ALTERNATIVE 10: Compact Serif List */
+        .alt10-list {
+            list-style: none;
+            font-family: var(--nk-font-serif);
+        }
+
+        .alt10-list li {
+            padding: 0.5rem 0;
+            font-size: 1.125rem;
+            color: #333;
+        }
+
+        .alt10-list li .item-subtitle {
+            display: block;
+            font-size: 0.9rem;
+            color: #777;
+            font-family: var(--nk-font-sans);
+            margin-top: 0.125rem;
+        }
+
+        .alt10-domain-title {
+            font-family: var(--nk-font-serif);
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--nk-blue);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .alt10-domain-title:first-child {
+            margin-top: 0;
+        }
+
+        @media (max-width: 768px) {
+            .alt5-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Development Map</h1>
+        <p class="intro">10 alternative designs for displaying selected modules</p>
+
+        <!-- ALTERNATIVE 1 -->
+        <div class="alternative">
+            <h2>Alternative 1: Minimal List with Checkmarks</h2>
+            <p class="description">Clean, simple, scannable. Checkmarks indicate completion/selection.</p>
+
+            <div class="sample-data">
+                <div class="alt1-domain-title">Leading Yourself</div>
+                <ul class="alt1-list">
+                    <li>The CEO Test & 5 Criteria for Success</li>
+                    <li>Deep Work: Protecting Your Cognitive Prime Time</li>
+                    <li>The Five Drivers of Motivation</li>
+                </ul>
+
+                <div class="alt1-domain-title">Leading Others</div>
+                <ul class="alt1-list">
+                    <li>The Delegation Framework</li>
+                    <li>Difficult Conversations: A Template</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ALTERNATIVE 2 -->
+        <div class="alternative">
+            <h2>Alternative 2: Cards with Left Border</h2>
+            <p class="description">Familiar card pattern with subtle hover effect. Left border adds visual interest.</p>
+
+            <div class="sample-data">
+                <div class="alt2-domain-title">Leading Yourself</div>
+                <ul class="alt2-list">
+                    <li>
+                        <span class="item-title">The CEO Test & 5 Criteria for Success</span>
+                        <span class="item-subtitle">Where do you actually stand against what the role demands?</span>
+                    </li>
+                    <li>
+                        <span class="item-title">Deep Work: Protecting Your Cognitive Prime Time</span>
+                        <span class="item-subtitle">Most CEOs have lost the ability to think deeply.</span>
+                    </li>
+                </ul>
+
+                <div class="alt2-domain-title">Leading Others</div>
+                <ul class="alt2-list">
+                    <li>
+                        <span class="item-title">The Delegation Framework</span>
+                        <span class="item-subtitle">Stop holding onto tasks that diminish you.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ALTERNATIVE 3 -->
+        <div class="alternative">
+            <h2>Alternative 3: Compact Inline Tags</h2>
+            <p class="description">Space-efficient, modern. Good for showing many items at once.</p>
+
+            <div class="sample-data">
+                <div class="alt3-domain">
+                    <div class="alt3-domain-title">Leading Yourself</div>
+                    <div class="alt3-tags">
+                        <span>The CEO Test</span>
+                        <span>Deep Work</span>
+                        <span>The 80/20 Discipline</span>
+                        <span>Five Drivers of Motivation</span>
+                        <span>Mental Biases</span>
+                    </div>
+                </div>
+
+                <div class="alt3-domain">
+                    <div class="alt3-domain-title">Leading Others</div>
+                    <div class="alt3-tags">
+                        <span>Delegation Framework</span>
+                        <span>Difficult Conversations</span>
+                        <span>One-on-Ones</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ALTERNATIVE 4 -->
+        <div class="alternative">
+            <h2>Alternative 4: Timeline Style</h2>
+            <p class="description">Suggests progression and journey. Vertical line connects modules.</p>
+
+            <div class="sample-data">
+                <div class="alt4-domain-title">Leading Yourself</div>
+                <ul class="alt4-list">
+                    <li>
+                        <span class="item-title">The CEO Test & 5 Criteria for Success</span>
+                        <span class="item-subtitle">Where do you actually stand against what the role demands?</span>
+                    </li>
+                    <li>
+                        <span class="item-title">Deep Work: Protecting Your Cognitive Prime Time</span>
+                        <span class="item-subtitle">Most CEOs have lost the ability to think deeply.</span>
+                    </li>
+                    <li>
+                        <span class="item-title">The Five Drivers of Motivation</span>
+                        <span class="item-subtitle">What's really fueling you? And is it sustainable?</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ALTERNATIVE 5 -->
+        <div class="alternative">
+            <h2>Alternative 5: Two-Column Grid</h2>
+            <p class="description">Efficient use of space. Shows more at a glance.</p>
+
+            <div class="sample-data">
+                <div class="alt5-grid">
+                    <div class="alt5-domain-title">Leading Yourself</div>
+                    <div class="item">
+                        <span class="item-title">The CEO Test</span>
+                        <span class="item-subtitle">5 criteria for success</span>
+                    </div>
+                    <div class="item">
+                        <span class="item-title">Deep Work</span>
+                        <span class="item-subtitle">Cognitive prime time</span>
+                    </div>
+                    <div class="item">
+                        <span class="item-title">80/20 Discipline</span>
+                        <span class="item-subtitle">Living the principle</span>
+                    </div>
+                    <div class="item">
+                        <span class="item-title">Five Drivers</span>
+                        <span class="item-subtitle">What fuels you?</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ALTERNATIVE 6 -->
+        <div class="alternative">
+            <h2>Alternative 6: Numbered List with Color Accents</h2>
+            <p class="description">Numbers suggest order and completeness. Colorful circular badges add personality.</p>
+
+            <div class="sample-data">
+                <div class="alt6-domain-title">Leading Yourself</div>
+                <ul class="alt6-list">
+                    <li>
+                        <span class="item-title">The CEO Test & 5 Criteria for Success</span>
+                        <span class="item-subtitle">Where do you actually stand?</span>
+                    </li>
+                    <li>
+                        <span class="item-title">Deep Work: Protecting Your Cognitive Prime Time</span>
+                        <span class="item-subtitle">Rebuilding focus</span>
+                    </li>
+                    <li>
+                        <span class="item-title">The Five Drivers of Motivation</span>
+                        <span class="item-subtitle">What's fueling you?</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ALTERNATIVE 7 -->
+        <div class="alternative">
+            <h2>Alternative 7: Subtle Gradient Cards</h2>
+            <p class="description">Soft gradients add depth without being overwhelming. Professional and polished.</p>
+
+            <div class="sample-data">
+                <div class="alt7-domain-title">Leading Yourself</div>
+                <ul class="alt7-list">
+                    <li>
+                        <span class="item-title">The CEO Test & 5 Criteria for Success</span>
+                        <span class="item-subtitle">Where do you actually stand against what the role demands?</span>
+                    </li>
+                    <li>
+                        <span class="item-title">Deep Work: Protecting Your Cognitive Prime Time</span>
+                        <span class="item-subtitle">Most CEOs have lost the ability to think deeply.</span>
+                    </li>
+                </ul>
+
+                <div class="alt7-domain-title">Leading Others</div>
+                <ul class="alt7-list">
+                    <li>
+                        <span class="item-title">The Delegation Framework</span>
+                        <span class="item-subtitle">Stop holding onto tasks that diminish you.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ALTERNATIVE 8 -->
+        <div class="alternative">
+            <h2>Alternative 8: Simple Bullets with Hover</h2>
+            <p class="description">Classic bullet list. Hover adds subtle interactivity.</p>
+
+            <div class="sample-data">
+                <div class="alt8-domain-title">Leading Yourself</div>
+                <ul class="alt8-list">
+                    <li>The CEO Test & 5 Criteria for Success</li>
+                    <li>Deep Work: Protecting Your Cognitive Prime Time</li>
+                    <li>The 80/20 Discipline</li>
+                    <li>The Five Drivers of Motivation</li>
+                </ul>
+
+                <div class="alt8-domain-title">Leading Others</div>
+                <ul class="alt8-list">
+                    <li>The Delegation Framework</li>
+                    <li>Difficult Conversations: A Template</li>
+                    <li>The Art of the One-on-One</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ALTERNATIVE 9 -->
+        <div class="alternative">
+            <h2>Alternative 9: Accordion-Style Sections</h2>
+            <p class="description">Grouped by domain with clear visual containers. Badge shows count.</p>
+
+            <div class="sample-data">
+                <div class="alt9-domain">
+                    <div class="alt9-domain-header">
+                        <span class="count">3</span>
+                        <span>Leading Yourself</span>
+                    </div>
+                    <ul class="alt9-list">
+                        <li>
+                            <span class="item-title">The CEO Test & 5 Criteria for Success</span>
+                            <span class="item-subtitle">Where do you actually stand?</span>
+                        </li>
+                        <li>
+                            <span class="item-title">Deep Work: Protecting Your Cognitive Prime Time</span>
+                            <span class="item-subtitle">Rebuilding focus</span>
+                        </li>
+                        <li>
+                            <span class="item-title">The Five Drivers of Motivation</span>
+                            <span class="item-subtitle">What's fueling you?</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="alt9-domain">
+                    <div class="alt9-domain-header">
+                        <span class="count">2</span>
+                        <span>Leading Others</span>
+                    </div>
+                    <ul class="alt9-list">
+                        <li>
+                            <span class="item-title">The Delegation Framework</span>
+                            <span class="item-subtitle">Stop holding onto tasks that diminish you</span>
+                        </li>
+                        <li>
+                            <span class="item-title">Difficult Conversations: A Template</span>
+                            <span class="item-subtitle">When avoidance costs more than addressing</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ALTERNATIVE 10 -->
+        <div class="alternative">
+            <h2>Alternative 10: Elegant Serif Typography</h2>
+            <p class="description">Typography-focused. Minimal styling, maximum elegance.</p>
+
+            <div class="sample-data">
+                <div class="alt10-domain-title">Leading Yourself</div>
+                <ul class="alt10-list">
+                    <li>
+                        The CEO Test & 5 Criteria for Success
+                        <span class="item-subtitle">Where do you actually stand against what the role demands?</span>
+                    </li>
+                    <li>
+                        Deep Work: Protecting Your Cognitive Prime Time
+                        <span class="item-subtitle">Most CEOs have lost the ability to think deeply. This rebuilds it.</span>
+                    </li>
+                    <li>
+                        The Five Drivers of Motivation
+                        <span class="item-subtitle">What's really fueling you? And is it sustainable?</span>
+                    </li>
+                </ul>
+
+                <div class="alt10-domain-title">Leading Others</div>
+                <ul class="alt10-list">
+                    <li>
+                        The Delegation Framework
+                        <span class="item-subtitle">Stop holding onto tasks that diminish you.</span>
+                    </li>
+                    <li>
+                        Difficult Conversations: A Template
+                        <span class="item-subtitle">When avoidance costs more than addressing it.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

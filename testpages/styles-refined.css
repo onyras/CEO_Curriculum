@@ -1,0 +1,608 @@
+/* ========================================
+   CEO Curriculum - Refined Professional Design
+   From 70% to 100%
+   ======================================== */
+
+:root {
+    /* Brand Colors */
+    --nk-black: #000000;
+    --nk-off-white: #F7F3ED;
+    --nk-white: #ffffff;
+    --nk-blue: #7FABC8;
+    --nk-green: #A6BEA4;
+    --nk-yellow: #C6A55B;
+    --nk-orange: #E08F6A;
+    --nk-lilac: #C7B9D3;
+
+    /* IMPROVEMENT 2: Subtle color tints instead of solid boxes */
+    --tint-blue: rgba(127, 171, 200, 0.08);
+    --tint-green: rgba(166, 190, 164, 0.08);
+    --tint-yellow: rgba(198, 165, 91, 0.08);
+    --tint-lilac: rgba(199, 185, 211, 0.08);
+
+    /* Typography */
+    --font-serif: 'Crimson Pro', Georgia, serif;
+    --font-sans: 'DM Sans', -apple-system, sans-serif;
+
+    /* IMPROVEMENT 3: More generous spacing scale */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 3rem;
+    --space-xl: 5rem;
+    --space-2xl: 7rem;
+
+    /* IMPROVEMENT 5: Refined shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+    /* IMPROVEMENT 5: Smooth transitions */
+    --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-medium: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========================================
+   Reset & Base
+   ======================================== */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 18px;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--nk-off-white);
+    color: var(--nk-black);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   IMPROVEMENT 1: Typography Hierarchy
+   Much bolder contrast, better spacing
+   ======================================== */
+
+h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-md);
+}
+
+/* Dramatically larger, bolder headings */
+h1 {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 600;
+    margin-bottom: var(--space-lg);
+}
+
+h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 500;
+}
+
+h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 500;
+}
+
+h4 {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 500;
+}
+
+p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+}
+
+/* Subtitle styling */
+.page-subtitle {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 300;
+    margin-bottom: var(--space-xl);
+}
+
+/* ========================================
+   Layout
+   ======================================== */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-md);
+}
+
+.wizard-step {
+    display: none;
+    min-height: 100vh;
+    padding: var(--space-2xl) var(--space-md);
+}
+
+.wizard-step.active {
+    display: block;
+}
+
+.step-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.step-content.centered {
+    text-align: center;
+}
+
+/* ========================================
+   Header & Navigation
+   ======================================== */
+
+.wizard-header {
+    background: var(--nk-black);
+    padding: var(--space-md);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-md);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+.header-logo {
+    height: 44px;
+    width: auto;
+}
+
+.wizard-steps {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(247, 243, 237, 0.6);
+    font-size: 0.875rem;
+    transition: var(--transition-medium);
+    cursor: pointer;
+}
+
+.step.active {
+    background: var(--nk-blue);
+    color: var(--nk-black);
+    box-shadow: var(--shadow-sm);
+}
+
+.step-number {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* ========================================
+   IMPROVEMENT 2: Subtle Color Strategy
+   Light tints, not heavy boxes
+   ======================================== */
+
+/* Original heavy box - BEFORE */
+.bento-box-old {
+    background: var(--nk-blue);
+    border: 2px solid var(--nk-black);
+    padding: 2rem;
+}
+
+/* Refined subtle accent - AFTER */
+.highlight-box {
+    background: var(--tint-blue);
+    border: 1px solid rgba(127, 171, 200, 0.2);
+    border-radius: 1rem;
+    padding: var(--space-lg);
+    margin: var(--space-xl) 0;
+}
+
+.bento-box.bento-highlight {
+    background: linear-gradient(135deg, var(--tint-blue) 0%, var(--tint-lilac) 100%);
+    border: 1px solid rgba(127, 171, 200, 0.15);
+    border-radius: 1.5rem;
+    padding: var(--space-lg);
+    margin: var(--space-xl) 0;
+}
+
+.bento-box.bento-highlight p {
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--nk-black);
+    margin: 0;
+}
+
+.bento-box {
+    background: var(--tint-green);
+    border: 1px solid rgba(166, 190, 164, 0.2);
+    border-radius: 1rem;
+    padding: var(--space-md);
+    margin: var(--space-lg) 0;
+}
+
+/* ========================================
+   Content Sections
+   ======================================== */
+
+.content-section {
+    margin: var(--space-xl) 0;
+    text-align: left;
+}
+
+.content-section p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+}
+
+/* ========================================
+   Step Cards & Grids
+   ======================================== */
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+    margin: var(--space-xl) 0;
+}
+
+.step-card {
+    text-align: center;
+    padding: var(--space-lg);
+    background: var(--nk-white);
+    border-radius: 1rem;
+    transition: var(--transition-medium);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.step-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.step-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-sm);
+}
+
+.step-card p {
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.7);
+    line-height: 1.6;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: var(--nk-blue);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 0 auto var(--space-md);
+}
+
+/* ========================================
+   IMPROVEMENT 4: Custom Checkbox Styling
+   Professional, branded checkboxes
+   ======================================== */
+
+.checklist-category {
+    margin: var(--space-2xl) 0;
+}
+
+.category-title {
+    font-size: 1.75rem;
+    font-weight: 500;
+    margin-bottom: var(--space-lg);
+    color: var(--nk-black);
+}
+
+.checklist {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    background: var(--nk-white);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: var(--transition-medium);
+    position: relative;
+}
+
+.checklist-item:hover {
+    background: var(--tint-blue);
+    border-color: var(--nk-blue);
+    box-shadow: var(--shadow-sm);
+    transform: translateX(4px);
+}
+
+/* Hide default checkbox */
+.checklist-item input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Custom checkbox */
+.checkbox-mark {
+    width: 24px;
+    height: 24px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    flex-shrink: 0;
+    transition: var(--transition-fast);
+    position: relative;
+    background: var(--nk-white);
+}
+
+.checklist-item:hover .checkbox-mark {
+    border-color: var(--nk-blue);
+}
+
+/* Checked state */
+.checklist-item input[type="checkbox"]:checked ~ .checkbox-mark {
+    background: var(--nk-blue);
+    border-color: var(--nk-blue);
+}
+
+/* Checkmark */
+.checklist-item input[type="checkbox"]:checked ~ .checkbox-mark::after {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 3px;
+    width: 6px;
+    height: 11px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.item-content {
+    flex: 1;
+}
+
+.item-title {
+    display: block;
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    color: var(--nk-black);
+}
+
+.item-subtitle {
+    display: block;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.6);
+    line-height: 1.5;
+}
+
+/* ========================================
+   IMPROVEMENT 5: Refined Buttons
+   Better states, smoother animations
+   ======================================== */
+
+.btn {
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    font-weight: 600;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition-medium);
+    display: inline-block;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: var(--nk-black);
+    color: var(--nk-off-white);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+    background: var(--nk-blue);
+    color: var(--nk-black);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--nk-black);
+    border: 2px solid var(--nk-black);
+}
+
+.btn-secondary:hover {
+    background: var(--nk-black);
+    color: var(--nk-off-white);
+}
+
+/* ========================================
+   Navigation & Counters
+   ======================================== */
+
+.wizard-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-md);
+    margin-top: var(--space-2xl);
+    flex-wrap: wrap;
+}
+
+.selection-count {
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 500;
+}
+
+.selection-count span {
+    color: var(--nk-blue);
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+/* ========================================
+   Domain Headers
+   ======================================== */
+
+.domain-header-clean {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+}
+
+.domain-header-clean .page-title {
+    margin-bottom: var(--space-sm);
+}
+
+/* ========================================
+   Review Page
+   ======================================== */
+
+.total-count-clean {
+    font-size: 3rem;
+    font-family: var(--font-serif);
+    font-weight: 600;
+    text-align: center;
+    margin: var(--space-xl) 0;
+    color: var(--nk-blue);
+}
+
+.review-sections {
+    margin: var(--space-xl) 0;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media (max-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+
+    .wizard-step {
+        padding: var(--space-xl) var(--space-md);
+    }
+
+    .step-label {
+        display: none;
+    }
+
+    h1 {
+        font-size: clamp(2rem, 10vw, 3rem);
+    }
+
+    .page-subtitle {
+        font-size: 1.25rem;
+    }
+
+    .steps-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+
+    .wizard-nav {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .checklist-item {
+        padding: var(--space-sm);
+    }
+}
+
+/* ========================================
+   Section Titles
+   ======================================== */
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: center;
+    margin: var(--space-2xl) 0 var(--space-lg);
+}
+
+/* ========================================
+   Lists
+   ======================================== */
+
+.bento-list {
+    list-style: none;
+    padding: 0;
+}
+
+.bento-list li {
+    padding: var(--space-sm) 0;
+    font-size: 1.125rem;
+    line-height: 1.6;
+}
+
+.bento-list li strong {
+    font-weight: 600;
+    color: var(--nk-black);
+}
+
+/* ========================================
+   Domain Icons
+   ======================================== */
+
+.domain-icon {
+    margin: 0 auto var(--space-md);
+}
+
+.domain-icon img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}

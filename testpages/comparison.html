@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module-by-Module Design Comparison</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nk-off-white: #F7F3ED;
+            --nk-black: #000000;
+            --nk-blue: #7FABC8;
+            --nk-green: #A6BEA4;
+            --nk-yellow: #C6A55B;
+            --nk-lilac: #C7B9D3;
+            --font-serif: 'Crimson Pro', Georgia, serif;
+            --font-sans: 'DM Sans', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--nk-off-white);
+            padding: 3rem 1.5rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-header h1 {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.125rem;
+            color: rgba(0,0,0,0.7);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .module {
+            margin: 5rem 0;
+            padding: 3rem;
+            background: white;
+            border-radius: 1.5rem;
+        }
+
+        .module-header {
+            margin-bottom: 2rem;
+        }
+
+        .module-number {
+            display: inline-block;
+            background: var(--nk-blue);
+            color: white;
+            padding: 0.375rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .module-title {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .module-description {
+            font-size: 1rem;
+            color: rgba(0,0,0,0.6);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .comparison-column {
+            background: var(--nk-off-white);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 2px solid rgba(0,0,0,0.1);
+        }
+
+        .column-label {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid rgba(0,0,0,0.1);
+            font-weight: 500;
+        }
+
+        .current-label {
+            color: rgba(0,0,0,0.5);
+        }
+
+        .improved-label {
+            color: var(--nk-blue);
+        }
+
+        .notes {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(0,0,0,0.03);
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            color: rgba(0,0,0,0.7);
+        }
+
+        /* ===================================
+           MODULE 1: TYPOGRAPHY (CURRENT)
+           =================================== */
+        .typo-current-h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.25rem, 5vw, 3.25rem);
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+
+        .typo-current-subtitle {
+            font-size: 1rem;
+            font-style: italic;
+            color: rgba(0,0,0,0.6);
+            margin-bottom: 1rem;
+        }
+
+        .typo-current-p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* MODULE 1: TYPOGRAPHY (IMPROVED) */
+        .typo-improved-h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+        }
+
+        .typo-improved-subtitle {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: rgba(0,0,0,0.6);
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .typo-improved-p {
+            font-size: 1.125rem;
+            line-height: 1.7;
+        }
+
+        /* ===================================
+           MODULE 2: COLOR (CURRENT)
+           =================================== */
+        .color-current-box {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .color-current-highlight {
+            background: rgba(0, 0, 0, 0.03);
+            border-left: 3px solid var(--nk-yellow);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+        }
+
+        /* MODULE 2: COLOR (IMPROVED) */
+        .color-improved-box {
+            background: linear-gradient(135deg, rgba(127, 171, 200, 0.08) 0%, rgba(199, 185, 211, 0.08) 100%);
+            border: 1px solid rgba(127, 171, 200, 0.15);
+            border-radius: 1.5rem;
+            padding: 2rem;
+        }
+
+        .color-improved-highlight {
+            background: rgba(127, 171, 200, 0.08);
+            border: 1px solid rgba(127, 171, 200, 0.2);
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+
+        /* ===================================
+           MODULE 3: SPACING (CURRENT)
+           =================================== */
+        .spacing-current {
+            padding: 1rem;
+        }
+
+        .spacing-current .item {
+            background: rgba(0,0,0,0.05);
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.75rem;
+            border-radius: 8px;
+        }
+
+        /* MODULE 3: SPACING (IMPROVED) */
+        .spacing-improved {
+            padding: 3rem 1.5rem;
+        }
+
+        .spacing-improved .item {
+            background: rgba(0,0,0,0.05);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 0.75rem;
+        }
+
+        /* ===================================
+           MODULE 4: CHECKBOXES (CURRENT)
+           =================================== */
+        .checkbox-current {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+        }
+
+        .checkbox-current input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* MODULE 4: CHECKBOXES (IMPROVED) */
+        .checkbox-improved {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: white;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 0.75rem;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .checkbox-improved:hover {
+            background: rgba(127, 171, 200, 0.08);
+            border-color: var(--nk-blue);
+            transform: translateX(4px);
+        }
+
+        .custom-checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            transition: 0.15s;
+        }
+
+        .custom-checkbox.checked {
+            background: var(--nk-blue);
+            border-color: var(--nk-blue);
+        }
+
+        .custom-checkbox.checked::after {
+            content: '✓';
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* ===================================
+           MODULE 5: BUTTONS (CURRENT)
+           =================================== */
+        .btn-current {
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.875rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background: var(--nk-green);
+            color: var(--nk-black);
+            transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-current:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(166, 190, 164, 0.4);
+        }
+
+        /* MODULE 5: BUTTONS (IMPROVED) */
+        .btn-improved {
+            font-family: var(--font-sans);
+            font-size: 1.125rem;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background: var(--nk-black);
+            color: var(--nk-off-white);
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .btn-improved:hover {
+            background: var(--nk-blue);
+            color: var(--nk-black);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        /* ===================================
+           MODULE 6: POLISH (CURRENT)
+           =================================== */
+        .polish-current-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        /* MODULE 6: POLISH (IMPROVED) */
+        .polish-improved-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .polish-improved-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        @media (max-width: 900px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>Design Refinement Modules</h1>
+            <p>Compare current design vs. improved version for each module. See exactly what changes in each refinement step.</p>
+        </div>
+
+        <!-- MODULE 1: TYPOGRAPHY -->
+        <div class="module">
+            <div class="module-header">
+                <span class="module-number">Module 1</span>
+                <h2 class="module-title">Typography Hierarchy</h2>
+                <p class="module-description">Bigger contrast, bolder headings, better spacing</p>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-column">
+                    <h3 class="column-label current-label">Current (Original)</h3>
+                    <h1 class="typo-current-h1">Konstantin Method Curriculum</h1>
+                    <p class="typo-current-subtitle">A Map for the Ongoing Work of Leadership</p>
+                    <p class="typo-current-p">This isn't a program you complete. It's a map I've developed over years of working with founders and CEOs.</p>
+
+                    <div class="notes">
+                        <strong>Current:</strong><br>
+                        • H1: 2.25-3.25rem, weight 400<br>
+                        • Subtitle: 1rem, italic<br>
+                        • Body: 1rem, line-height 1.6
+                    </div>
+                </div>
+
+                <div class="comparison-column">
+                    <h3 class="column-label improved-label">Improved</h3>
+                    <h1 class="typo-improved-h1">Konstantin Method Curriculum</h1>
+                    <p class="typo-improved-subtitle">A Map for the Ongoing Work of Leadership</p>
+                    <p class="typo-improved-p">This isn't a program you complete. It's a map I've developed over years of working with founders and CEOs.</p>
+
+                    <div class="notes">
+                        <strong>Improved:</strong><br>
+                        • H1: 2.5-5rem, weight 600 (54% larger, bolder)<br>
+                        • Subtitle: 1.5rem, italic (50% larger)<br>
+                        • Body: 1.125rem, line-height 1.7 (better readability)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODULE 2: COLOR STRATEGY -->
+        <div class="module">
+            <div class="module-header">
+                <span class="module-number">Module 2</span>
+                <h2 class="module-title">Color Strategy</h2>
+                <p class="module-description">Subtle tints instead of heavy boxes, gradient backgrounds</p>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-column">
+                    <h3 class="column-label current-label">Current (Original)</h3>
+                    <div class="color-current-box">
+                        <p><strong>This is a regular bento box.</strong></p>
+                        <p>White background with slight transparency.</p>
+                    </div>
+                    <div class="color-current-highlight">
+                        <p><strong>The person with the fewest blind spots wins.</strong></p>
+                    </div>
+
+                    <div class="notes">
+                        <strong>Current:</strong><br>
+                        • Background: rgba(255,255,255,0.7)<br>
+                        • Highlight: 3px yellow left border<br>
+                        • No gradients, basic containers
+                    </div>
+                </div>
+
+                <div class="comparison-column">
+                    <h3 class="column-label improved-label">Improved</h3>
+                    <div class="color-improved-highlight">
+                        <p><strong>This uses subtle color tints.</strong></p>
+                        <p>8% opacity blue tint, lighter border.</p>
+                    </div>
+                    <div class="color-improved-box">
+                        <p><strong>The person with the fewest blind spots wins.</strong></p>
+                    </div>
+
+                    <div class="notes">
+                        <strong>Improved:</strong><br>
+                        • Background: Gradient with 8% opacity tints<br>
+                        • Border: 1px with transparency<br>
+                        • Softer, more elegant feel
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODULE 3: SPACING -->
+        <div class="module">
+            <div class="module-header">
+                <span class="module-number">Module 3</span>
+                <h2 class="module-title">Spacing & Breathing Room</h2>
+                <p class="module-description">More generous whitespace, systematic spacing scale</p>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-column">
+                    <h3 class="column-label current-label">Current (Original)</h3>
+                    <div class="spacing-current">
+                        <div class="item">Module Item 1</div>
+                        <div class="item">Module Item 2</div>
+                        <div class="item">Module Item 3</div>
+                    </div>
+
+                    <div class="notes">
+                        <strong>Current:</strong><br>
+                        • Padding: 1rem<br>
+                        • Gap: 0.75rem<br>
+                        • Item padding: 0.75rem
+                    </div>
+                </div>
+
+                <div class="comparison-column">
+                    <h3 class="column-label improved-label">Improved</h3>
+                    <div class="spacing-improved">
+                        <div class="item">Module Item 1</div>
+                        <div class="item">Module Item 2</div>
+                        <div class="item">Module Item 3</div>
+                    </div>
+
+                    <div class="notes">
+                        <strong>Improved:</strong><br>
+                        • Padding: 3rem (3x more)<br>
+                        • Gap: 2rem (2.6x more)<br>
+                        • Item padding: 1.5rem (2x more)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODULE 4: CHECKBOXES -->
+        <div class="module">
+            <div class="module-header">
+                <span class="module-number">Module 4</span>
+                <h2 class="module-title">Custom Form Elements</h2>
+                <p class="module-description">Branded checkboxes with smooth animations</p>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-column">
+                    <h3 class="column-label current-label">Current (Original)</h3>
+                    <div class="checkbox-current">
+                        <input type="checkbox">
+                        <span>Default browser checkbox</span>
+                    </div>
+                    <div class="checkbox-current">
+                        <input type="checkbox" checked>
+                        <span>Generic styling, inconsistent across browsers</span>
+                    </div>
+
+                    <div class="notes">
+                        <strong>Current:</strong><br>
+                        • Browser default checkboxes<br>
+                        • No hover states<br>
+                        • Doesn't match brand
+                    </div>
+                </div>
+
+                <div class="comparison-column">
+                    <h3 class="column-label improved-label">Improved</h3>
+                    <div class="checkbox-improved">
+                        <div class="custom-checkbox"></div>
+                        <span>Custom branded checkbox with NK blue</span>
+                    </div>
+                    <div class="checkbox-improved">
+                        <div class="custom-checkbox checked"></div>
+                        <span>Smooth animations, hover states, translateX effect</span>
+                    </div>
+
+                    <div class="notes">
+                        <strong>Improved:</strong><br>
+                        • Custom NK-branded styling<br>
+                        • Hover: background tint + border color<br>
+                        • Micro-interaction: translateX(4px)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODULE 5: BUTTONS -->
+        <div class="module">
+            <div class="module-header">
+                <span class="module-number">Module 5</span>
+                <h2 class="module-title">Buttons & Navigation</h2>
+                <p class="module-description">Professional button styling with refined interactions</p>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-column">
+                    <h3 class="column-label current-label">Current (Original)</h3>
+                    <button class="btn-current">Continue</button>
+
+                    <div class="notes">
+                        <strong>Current:</strong><br>
+                        • Background: NK green<br>
+                        • Font size: 1rem, weight 500<br>
+                        • Hover: translateY + green shadow<br>
+                        • No base shadow
+                    </div>
+                </div>
+
+                <div class="comparison-column">
+                    <h3 class="column-label improved-label">Improved</h3>
+                    <button class="btn-improved">Continue</button>
+
+                    <div class="notes">
+                        <strong>Improved:</strong><br>
+                        • Background: Black → Blue on hover<br>
+                        • Font size: 1.125rem, weight 600<br>
+                        • Base shadow for depth<br>
+                        • Hover: Color change + lift + shadow increase
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODULE 6: POLISH -->
+        <div class="module">
+            <div class="module-header">
+                <span class="module-number">Module 6</span>
+                <h2 class="module-title">Visual Polish & Shadows</h2>
+                <p class="module-description">Subtle shadows, smooth animations, micro-interactions</p>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-column">
+                    <h3 class="column-label current-label">Current (Original)</h3>
+                    <div class="polish-current-card">
+                        <h4>Card Component</h4>
+                        <p>No shadows, basic border, no hover effects.</p>
+                    </div>
+
+                    <div class="notes">
+                        <strong>Current:</strong><br>
+                        • Border: 1px solid<br>
+                        • No shadows<br>
+                        • No hover state
+                    </div>
+                </div>
+
+                <div class="comparison-column">
+                    <h3 class="column-label improved-label">Improved</h3>
+                    <div class="polish-improved-card">
+                        <h4>Card Component</h4>
+                        <p>Subtle shadow for depth, hover lift effect with increased shadow.</p>
+                    </div>
+
+                    <div class="notes">
+                        <strong>Improved:</strong><br>
+                        • Shadow: 0 4px 12px rgba(0,0,0,0.06)<br>
+                        • Hover: translateY(-4px) + larger shadow<br>
+                        • Cubic bezier easing for smoothness
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 5rem; padding: 3rem; background: white; border-radius: 1.5rem;">
+            <h2 style="font-family: var(--font-serif); font-size: 2rem; margin-bottom: 1rem; font-weight: 600;">
+                Ready to Apply Improvements?
+            </h2>
+            <p style="font-size: 1.125rem; color: rgba(0,0,0,0.7); max-width: 600px; margin: 0 auto;">
+                Pick a module to work on. We'll apply each refinement one at a time to the test page.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

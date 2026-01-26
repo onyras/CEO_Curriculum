@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Konstantin Method | Nikolas Konstantin</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Progress Header -->
+    <header class="wizard-header">
+        <div class="header-content">
+            <img src="../nk_logo.png" alt="NK" class="header-logo">
+            <div class="header-nav-wrapper">
+                <div class="wizard-steps">
+                <div class="step active" data-step="1">
+                    <span class="step-number">1</span>
+                    <span class="step-label">The Method</span>
+                </div>
+                <div class="step" data-step="2">
+                    <span class="step-number">2</span>
+                    <span class="step-label">Territories</span>
+                </div>
+                <div class="step" data-step="3">
+                    <span class="step-number">3</span>
+                    <span class="step-label">How We Work</span>
+                </div>
+                <div class="step" data-step="4">
+                    <span class="step-number"><img src="../icon_yourself.png" alt="" style="width: 20px; height: 20px;"></span>
+                    <span class="step-label">Yourself</span>
+                </div>
+                <div class="step" data-step="5">
+                    <span class="step-number"><img src="../icon_others.png" alt="" style="width: 20px; height: 20px;"></span>
+                    <span class="step-label">Others</span>
+                </div>
+                <div class="step" data-step="6">
+                    <span class="step-number"><img src="../icon_organization.png" alt="" style="width: 20px; height: 20px;"></span>
+                    <span class="step-label">Organization</span>
+                </div>
+                <div class="step" data-step="7">
+                    <span class="step-number">7</span>
+                    <span class="step-label">Intensives</span>
+                </div>
+                <div class="step" data-step="8">
+                    <span class="step-number">8</span>
+                    <span class="step-label">Review</span>
+                </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <!-- Step 1: The Konstantin Method -->
+    <section class="wizard-step active" data-step="1">
+        <div class="container">
+            <div class="step-content centered">
+                <h1 class="page-title">Konstantin Method: The Curriculum</h1>
+                <p class="page-subtitle">A Map for the Ongoing Work of Leadership</p>
+
+                <div class="bento-box bento-highlight">
+                    <p><strong>The person with the fewest blind spots wins.</strong></p>
+                </div>
+
+                <div class="content-section">
+                    <p>This isn't a program you complete. It's a map I've developed over years of working with founders and CEOs who already know how to run a company. They don't need the basics. They need someone to help them see what they've been avoiding.</p>
+                </div>
+
+                <div class="bento-box">
+                    <p><strong>My growing library consists of 60+ frameworks, guides, and deep-dives across three domains: Leading Yourself, Leading Others, and Leading the Organization.</strong></p>
+                </div>
+
+                <div class="content-section">
+                    <p>Most leadership development gets this backwards. It starts with strategy, structure, and systems. But organizations are just people coordinating. And people can only coordinate as well as they can see themselves and each other.</p>
+
+                    <p><strong>Clarity precedes effectiveness. Always.</strong></p>
+                </div>
+
+                <button class="btn btn-primary" onclick="nextStep()">Continue</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Step 2: The Three Territories -->
+    <section class="wizard-step" data-step="2">
+        <div class="container">
+            <div class="step-content centered">
+                <h1 class="page-title">The Three Territories</h1>
+                <p class="page-subtitle">The method covers three territories, in this order</p>
+
+                <div class="content-section">
+                    <div class="steps-grid">
+                        <div class="step-card" data-number="01">
+                            <div class="domain-icon yourself" style="margin: 0 auto 1.5rem;">
+                                <img src="../icon_yourself.png" alt="Leading Yourself" style="width: 100px; height: 100px;">
+                            </div>
+                            <h3>Leading Yourself</h3>
+                            <p>The inner work that makes outer work possible</p>
+                        </div>
+
+                        <div class="step-card" data-number="02">
+                            <div class="domain-icon teams" style="margin: 0 auto 1.5rem;">
+                                <img src="../icon_others.png" alt="Leading Others" style="width: 100px; height: 100px;">
+                            </div>
+                            <h3>Leading Others</h3>
+                            <p>Building trust and connection at scale</p>
+                        </div>
+
+                        <div class="step-card" data-number="03">
+                            <div class="domain-icon organizations" style="margin: 0 auto 1.5rem;">
+                                <img src="../icon_organization.png" alt="Leading the Organization" style="width: 100px; height: 100px;">
+                            </div>
+                            <h3>Leading the Organization</h3>
+                            <p>Shaping systems that outlast you</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="section-title">Every Territory Has 2 Tracks To Choose From</h2>
+
+                <div class="bento-box">
+                    <ul class="bento-list">
+                        <li><strong>Foundations:</strong> The essential disciplines. Even experienced leaders have gaps here.</li>
+                        <li><strong>Advanced:</strong> The harder questions. Where seasoned CEOs often find the real work.</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <p>We won't go through this sequentially. Based on where you are and what you're facing, we'll pull what's relevant. Think of it as a map, not a syllabus.</p>
+                </div>
+
+                <div class="wizard-nav">
+                    <button class="btn btn-secondary" onclick="prevStep()">Back</button>
+                    <button class="btn btn-primary" onclick="nextStep()">Continue</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Step 3: How We Work Together -->
+    <section class="wizard-step" data-step="3">
+        <div class="container">
+            <div class="step-content centered">
+                <h1 class="page-title">How We Work Together</h1>
+
+                <div class="steps-grid">
+                    <div class="step-card" data-number="01">
+                        <span class="step-number">1</span>
+                        <h3>Identify Immediate Needs</h3>
+                        <p>Which territory calls to you? Where do you feel stuck, uncertain, or curious? We start with what's most alive for you right now.</p>
+                    </div>
+
+                    <div class="step-card" data-number="02">
+                        <span class="step-number">2</span>
+                        <h3>Plan Workshop Cadence</h3>
+                        <p>We select modules that address your highest-leverage opportunities. Every framework gets tested against your actual challenges.</p>
+                    </div>
+
+                    <div class="step-card" data-number="03">
+                        <span class="step-number">3</span>
+                        <h3>Review & Iterate</h3>
+                        <p>Time to integrate, experiment, and notice what shifts. Quarterly, we review the map and adjust based on where you've grown.</p>
+                    </div>
+                </div>
+
+                <div class="wizard-nav">
+                    <button class="btn btn-secondary" onclick="prevStep()">Back</button>
+                    <button class="btn btn-primary" onclick="nextStep()">Explore the Map</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Step 4: Leading Yourself -->
+    <section class="wizard-step" data-step="4">
+        <div class="container">
+            <div class="step-content">
+                <div class="domain-header-clean">
+                    <img src="../icon_yourself.png" alt="" style="width: 60px; height: 60px; margin: 0 auto 1rem; display: block; opacity: 0.9;">
+                    <h1 class="page-title">Leading Yourself</h1>
+                    <p class="page-subtitle">The inner work that makes outer work possible</p>
+                </div>
+
+                <!-- Foundations -->
+                <div class="checklist-category">
+                    <h3 class="category-title">Foundations</h3>
+                    <div class="checklist">
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="ceo-test" data-domain="yourself">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The CEO Test & 5 Criteria for Success</span>
+                                <span class="item-subtitle">Where do you actually stand against what the role demands?</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="deep-work" data-domain="yourself">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Deep Work: Protecting Your Cognitive Prime Time</span>
+                                <span class="item-subtitle">Most CEOs have lost the ability to think deeply. This rebuilds it.</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="80-20" data-domain="yourself">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The 80/20 Discipline</span>
+                                <span class="item-subtitle">You know the principle. The question is why you're still not living it.</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="zone-genius" data-domain="yourself">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Zone of Genius</span>
+                                <span class="item-subtitle">Distinguishing what you're good at from what you should actually be doing</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="five-drivers" data-domain="yourself">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Five Drivers of Motivation</span>
+                                <span class="item-subtitle">What's really fueling you? And is it sustainable?</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="mental-biases" data-domain="yourself">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Mental Biases & Decision Traps</span>
+                                <span class="item-subtitle">The shortcuts that served you early may be costing you now</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="four-relationships" data-domain="yourself">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Four Relationships: Self, Work, Others, Purpose</span>
+                                <span class="item-subtitle">Work-life balance is the wrong frame. Integration is the goal.</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="above-line" data-domain="yourself">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Leading Above the Line</span>
+                                <span class="item-subtitle">Recognizing reactivity in yourself before it leaks onto your team</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Visual Separator -->
+                <div style="text-align: center; margin: 3rem 0;">
+                    <img src="../icon_yourself.png" alt="" style="width: 40px; height: 40px; opacity: 0.3;">
+                </div>
+
+                <!-- Advanced -->
+                <div class="checklist-category">
+                    <h3 class="category-title">Advanced</h3>
+                    <div class="checklist">
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="empathy-trap" data-domain="yourself">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Empathy Trap: When Caring Becomes a Liability</span>
+                                <span class="item-subtitle">Compassion without boundaries leads to burnout. Or worse, enabling.</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="emotional-fluidity" data-domain="yourself">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Emotional Fluidity: The Contracts You Never Signed</span>
+                                <span class="item-subtitle">Unconscious agreements from decades ago still run parts of your leadership</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="the-undoing" data-domain="yourself">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Undoing: What Got You Here Won't Get You There</span>
+                                <span class="item-subtitle">Some strengths have become prisons. Which ones?</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="second-mountain" data-domain="yourself">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Second Mountain: When Success Stops Being Enough</span>
+                                <span class="item-subtitle">What happens when you've achieved what you set out to achieve?</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="kodawari" data-domain="yourself">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Kodawari: The Spiritual Dimension of Mastery</span>
+                                <span class="item-subtitle">Excellence as a practice, not a destination</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="wisdom-quadrant" data-domain="yourself">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Wisdom Quadrant</span>
+                                <span class="item-subtitle">Integrating knowledge, experience, intuition, and ethics</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="contemplative-practice" data-domain="yourself">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Contemplative Practice for Leaders</span>
+                                <span class="item-subtitle">Three styles of meditation and when each serves</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="zurcher-ressource" data-domain="yourself">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Zürcher Ressource Model: Accessing Peak States</span>
+                                <span class="item-subtitle">Creating reliable pathways to your best self under pressure</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="wizard-nav">
+                    <button class="btn btn-secondary" onclick="prevStep()">Back</button>
+                    <div class="selection-count">
+                        <span id="yourselfCount">0</span> selected in this section
+                    </div>
+                    <button class="btn btn-primary" onclick="nextStep()">Continue</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Step 5: Leading Others -->
+    <section class="wizard-step" data-step="5">
+        <div class="container">
+            <div class="step-content">
+                <div class="domain-header-clean">
+                    <img src="../icon_others.png" alt="" style="width: 60px; height: 60px; margin: 0 auto 1rem; display: block; opacity: 0.9;">
+                    <h1 class="page-title">Leading Others</h1>
+                    <p class="page-subtitle">Building trust and connection at scale</p>
+                </div>
+
+                <!-- Foundations -->
+                <div class="checklist-category">
+                    <h3 class="category-title">Foundations</h3>
+                    <div class="checklist">
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="trust-formula" data-domain="others">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Trust Formula</span>
+                                <span class="item-subtitle">Trust isn't abstract. It has components. You can engineer it.</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="psych-safety" data-domain="others">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Psychological Safety: What It Actually Requires</span>
+                                <span class="item-subtitle">Everyone talks about it. Few know how to build it.</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="five-dysfunctions" data-domain="others">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Five Dysfunctions</span>
+                                <span class="item-subtitle">Lencioni's model, pressure-tested against real teams</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="nvc" data-domain="others">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Non-Violent Communication</span>
+                                <span class="item-subtitle">A framework for hard conversations that don't leave wreckage</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="drama-triangle" data-domain="others">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Drama Triangle</span>
+                                <span class="item-subtitle">Victim, Persecutor, Rescuer: the roles that keep teams stuck</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="four-meetings" data-domain="others">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Four Meetings</span>
+                                <span class="item-subtitle">Most companies have too many meetings and the wrong ones. Fix both.</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="multipliers" data-domain="others">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Multipliers vs. Diminishers</span>
+                                <span class="item-subtitle">Are you doubling your team's intelligence or accidentally halving it?</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="leadership-management" data-domain="others">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Leadership vs. Management</span>
+                                <span class="item-subtitle">Different muscles. When to use which.</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Visual Separator -->
+                <div style="text-align: center; margin: 3rem 0;">
+                    <img src="../icon_others.png" alt="" style="width: 40px; height: 40px; opacity: 0.3;">
+                </div>
+
+                <!-- Advanced -->
+                <div class="checklist-category">
+                    <h3 class="category-title">Advanced</h3>
+                    <div class="checklist">
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="leaders-trap" data-domain="others">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Leader's Trap: When Self-Reliance Becomes Self-Sabotage</span>
+                                <span class="item-subtitle">Your independence got you here. It's now limiting what's possible.</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="cofounder" data-domain="others">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Co-Founder Relationship: Four Ways It Dies</span>
+                                <span class="item-subtitle">Patterns that destroy partnerships, and how to interrupt them</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="rebuilding-trust" data-domain="others">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Rebuilding Trust After Betrayal</span>
+                                <span class="item-subtitle">What's actually required when trust has been broken</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="team-one" data-domain="others">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Team One: Solving for the Whole</span>
+                                <span class="item-subtitle">When your leadership team optimizes for their functions, everyone loses</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="greek-faucet" data-domain="others">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Greek Faucet Method</span>
+                                <span class="item-subtitle">Moving past surface-level insight to what's actually going on</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="outgrown" data-domain="others">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">When Your Team Has Outgrown You (Or Vice Versa)</span>
+                                <span class="item-subtitle">The conversation no one wants to have</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="mistakes-assets" data-domain="others">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Mistakes as Assets</span>
+                                <span class="item-subtitle">Building a culture that learns from failure without celebrating it</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="idiot-compassion" data-domain="others">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Recognizing Idiot Compassion</span>
+                                <span class="item-subtitle">When "being supportive" is actually a failure of leadership</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="wizard-nav">
+                    <button class="btn btn-secondary" onclick="prevStep()">Back</button>
+                    <div class="selection-count">
+                        <span id="othersCount">0</span> selected in this section
+                    </div>
+                    <button class="btn btn-primary" onclick="nextStep()">Continue</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Step 6: Leading the Organization -->
+    <section class="wizard-step" data-step="6">
+        <div class="container">
+            <div class="step-content">
+                <div class="domain-header-clean">
+                    <img src="../icon_organization.png" alt="" style="width: 60px; height: 60px; margin: 0 auto 1rem; display: block; opacity: 0.9;">
+                    <h1 class="page-title">Leading the Organization</h1>
+                    <p class="page-subtitle">Shaping systems that outlast you</p>
+                </div>
+
+                <!-- Foundations -->
+                <div class="checklist-category">
+                    <h3 class="category-title">Foundations</h3>
+                    <div class="checklist">
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="drucker-questions" data-domain="organizations">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Drucker's Five Questions</span>
+                                <span class="item-subtitle">Still the best starting point for strategic clarity</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="strategy-traps" data-domain="organizations">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Six Strategy Traps</span>
+                                <span class="item-subtitle">Why most "strategies" aren't strategies at all</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="playing-to-win" data-domain="organizations">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Playing to Win</span>
+                                <span class="item-subtitle">Making real choices instead of hedged bets</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="four-cultures" data-domain="organizations">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Four Cultures Model</span>
+                                <span class="item-subtitle">Understanding your organization's actual DNA, not the one on the wall</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="culture-diagnostic" data-domain="organizations">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Culture Diagnostic</span>
+                                <span class="item-subtitle">A systematic way to see where culture supports or undermines strategy</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="on-vs-in" data-domain="organizations">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Working ON vs. IN the Business</span>
+                                <span class="item-subtitle">The discipline of strategic altitude</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="three-transitions" data-domain="organizations">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Three Transitions</span>
+                                <span class="item-subtitle">What changes when you scale from 20 to 50 to 200 to 1000</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="startups-fail" data-domain="organizations">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Why Startups Fail</span>
+                                <span class="item-subtitle">The predictable patterns, and how to avoid them</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Visual Separator -->
+                <div style="text-align: center; margin: 3rem 0;">
+                    <img src="../icon_organization.png" alt="" style="width: 40px; height: 40px; opacity: 0.3;">
+                </div>
+
+                <!-- Advanced -->
+                <div class="checklist-category">
+                    <h3 class="category-title">Advanced</h3>
+                    <div class="checklist">
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="three-deaths" data-domain="organizations">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Three Deaths of a CEO</span>
+                                <span class="item-subtitle">The failure modes that end tenures. Which one is your risk?</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="strategy-drift" data-domain="organizations">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Strategy Drift: Why Good Strategies Erode</span>
+                                <span class="item-subtitle">You had a strategy. What happened to it?</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="peter-principle" data-domain="organizations">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Peter Principle Trap</span>
+                                <span class="item-subtitle">Promotion patterns that systematically create incompetence</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="ambidextrous" data-domain="organizations">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Ambidextrous Organizations</span>
+                                <span class="item-subtitle">Balancing exploitation and exploration without tearing yourselves apart</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="onion-risk" data-domain="organizations">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Onion Theory of Risk</span>
+                                <span class="item-subtitle">Layered protection for what actually matters</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="board-effectiveness" data-domain="organizations">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Board Effectiveness (From the CEO Seat)</span>
+                                <span class="item-subtitle">Getting value from governance instead of just managing it</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="founder-chairman" data-domain="organizations">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Founder to Chairman: The Hardest Transition</span>
+                                <span class="item-subtitle">What it takes to step back without stepping away</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="legacy-architecture" data-domain="organizations">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Legacy Architecture</span>
+                                <span class="item-subtitle">What will outlast your tenure? Have you built it?</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="leaving-decency" data-domain="organizations">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">Leaving with Decency</span>
+                                <span class="item-subtitle">Succession done right, whenever that time comes</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="wizard-nav">
+                    <button class="btn btn-secondary" onclick="prevStep()">Back</button>
+                    <div class="selection-count">
+                        <span id="organizationsCount">0</span> selected in this section
+                    </div>
+                    <button class="btn btn-primary" onclick="nextStep()">Continue</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Step 7: Intensives -->
+    <section class="wizard-step" data-step="7">
+        <div class="container">
+            <div class="step-content">
+                <div class="domain-header-clean">
+                    <h1 class="page-title">Intensives</h1>
+                    <p class="page-subtitle">Concentrated resources for specific challenges</p>
+                </div>
+
+                <!-- Intensives -->
+                <div class="checklist-category">
+                    <h3 class="category-title">Available Intensives</h3>
+                    <div class="checklist">
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="communication-toolkit" data-domain="intensives">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The CEO Communication Toolkit</span>
+                                <span class="item-subtitle">Frameworks and templates for high-stakes communication</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="negotiations-lab" data-domain="intensives">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Negotiations Lab</span>
+                                <span class="item-subtitle">Preparation and practice for critical negotiations</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="scaling-playbook" data-domain="intensives">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Scaling Playbook</span>
+                                <span class="item-subtitle">What breaks at each stage and how to get ahead of it</span>
+                            </div>
+                        </label>
+                        <label class="checklist-item">
+                            <input type="checkbox" name="module" value="strategy-lab" data-domain="intensives">
+                            <span class="checkbox-mark"></span>
+                            <div class="item-content">
+                                <span class="item-title">The Strategy Lab</span>
+                                <span class="item-subtitle">Structured frameworks for strategic clarity</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="wizard-nav">
+                    <button class="btn btn-secondary" onclick="prevStep()">Back</button>
+                    <div class="selection-count">
+                        <span id="intensivesCount">0</span> selected in this section
+                    </div>
+                    <button class="btn btn-primary" onclick="nextStep()">Review My Map</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Step 8: Review -->
+    <section class="wizard-step" data-step="8">
+        <div class="container">
+            <div class="step-content centered">
+                <h1 class="page-title">Your Development Map</h1>
+                <p class="page-subtitle">Here's what calls to you</p>
+
+                <div class="content-section">
+                    <p>We'll use this as our starting point together. These are the territories where you've identified the highest-leverage development opportunities.</p>
+                </div>
+
+                <div class="total-count-clean">
+                    <span id="totalCount">0</span> modules selected
+                </div>
+
+                <div class="review-sections" id="reviewSections">
+                    <!-- Populated by JavaScript -->
+                </div>
+
+                <div class="wizard-nav">
+                    <button class="btn btn-secondary" onclick="prevStep()">Make Changes</button>
+                    <button class="btn btn-primary" onclick="submitCurriculum()">Submit My Map</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="curriculum.js"></script>
+</body>
+</html>
