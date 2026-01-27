@@ -253,7 +253,7 @@ h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
 }
 
 .bento-box.bento-highlight {
-    background: rgba(0, 0, 0, 0.03);
+    background: rgba(255, 255, 255, 0.9);
     border-left: 3px solid var(--nk-yellow);
 }
 
@@ -2176,12 +2176,14 @@ h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
     border: 2px solid transparent;
     border-radius: 12px;
     cursor: pointer;
-    transition: all var(--nk-transition-fast);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .checklist-item:hover {
-    border-color: rgba(0, 0, 0, 0.08);
+    background: rgba(166, 190, 164, 0.08);
+    border-color: var(--nk-green);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transform: translateX(4px);
 }
 
 .checklist-item input {
@@ -2199,8 +2201,13 @@ h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all var(--nk-transition-fast);
+    background: var(--nk-white);
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     margin-top: 2px;
+}
+
+.checklist-item:hover .checkbox-mark {
+    border-color: var(--nk-green);
 }
 
 .checklist-item input:checked + .checkbox-mark {
@@ -2317,6 +2324,7 @@ h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
 
 .review-sections {
     margin-bottom: 2.5rem;
+    text-align: left;
 }
 
 .review-domain {
@@ -2330,6 +2338,7 @@ h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid;
+    text-align: left;
 }
 
 .review-domain-title.yourself {
@@ -2353,6 +2362,27 @@ h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
     color: var(--nk-lilac);
 }
 
+/* Two-column grid for Foundation/Advanced */
+.review-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.review-column {
+    text-align: left;
+}
+
+.track-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 0.75rem;
+}
+
 .review-list {
     list-style: none;
     display: grid;
@@ -2365,17 +2395,27 @@ h4 { font-size: clamp(1.125rem, 2vw, 1.375rem); }
     padding: 1rem 1.25rem;
     background: var(--nk-white);
     border-radius: 10px;
+    text-align: left;
 }
 
 .review-list li strong {
     font-size: 1rem;
     font-weight: 500;
     margin-bottom: 0.25rem;
+    text-align: left;
 }
 
 .review-list li span {
     font-size: 0.875rem;
     color: rgba(0, 0, 0, 0.55);
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .review-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
 }
 
 .empty-review {

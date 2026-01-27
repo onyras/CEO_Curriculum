@@ -20,10 +20,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const input = item.querySelector('input');
         const title = item.querySelector('.item-title').textContent;
         const subtitle = item.querySelector('.item-subtitle').textContent;
+
+        // Determine track (Foundation or Advanced) from parent category
+        const category = item.closest('.checklist-category');
+        const categoryTitle = category?.querySelector('.category-title')?.textContent.trim() || 'Foundations';
+        const track = categoryTitle.toLowerCase().includes('advanced') ? 'advanced' : 'foundation';
+
         moduleData[input.value] = {
             title,
             subtitle,
-            domain: input.dataset.domain
+            domain: input.dataset.domain,
+            track: track
         };
     });
 
@@ -131,7 +138,8 @@ function getSelectedModules() {
             selected[data.domain].push({
                 id: checkbox.value,
                 title: data.title,
-                subtitle: data.subtitle
+                subtitle: data.subtitle,
+                track: data.track
             });
         }
     });
@@ -157,17 +165,42 @@ function populateReview() {
     Object.entries(selected).forEach(([domain, modules]) => {
         if (modules.length > 0) {
             totalCount += modules.length;
+
+            // Separate modules by track
+            const foundationModules = modules.filter(m => m.track === 'foundation');
+            const advancedModules = modules.filter(m => m.track === 'advanced');
+
             html += `
                 <div class="review-domain">
                     <h3 class="review-domain-title ${domain}">${domainInfo[domain].title}</h3>
-                    <ul class="review-list">
-                        ${modules.map(m => `
-                            <li>
-                                <strong>${m.title}</strong>
-                                <span>${m.subtitle}</span>
-                            </li>
-                        `).join('')}
-                    </ul>
+                    <div class="review-grid">
+                        <div class="review-column">
+                            ${foundationModules.length > 0 ? `
+                                <h4 class="track-title">Foundations</h4>
+                                <ul class="review-list">
+                                    ${foundationModules.map(m => `
+                                        <li>
+                                            <strong>${m.title}</strong>
+                                            <span>${m.subtitle}</span>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            ` : ''}
+                        </div>
+                        <div class="review-column">
+                            ${advancedModules.length > 0 ? `
+                                <h4 class="track-title">Advanced</h4>
+                                <ul class="review-list">
+                                    ${advancedModules.map(m => `
+                                        <li>
+                                            <strong>${m.title}</strong>
+                                            <span>${m.subtitle}</span>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            ` : ''}
+                        </div>
+                    </div>
                 </div>
             `;
         }
